@@ -1,38 +1,505 @@
-.App {
-  text-align: center;
+/* font import guard (leave in case index.html missing the link) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --base: #555;
+  --base-100: #f1f1f1;
+  --base-400: #555;
+  --base-800: #000;
+  --yellow: #ffda4b;
+  --yellow-100: #fffbe6;
+  --yellow-400: #ffda4b;
+  --yellow-800: #8b6f00;
+  --blue: #0a61ae;
+  --blue-100: #e2f8ff;
+  --blue-400: #61dafb;
+  --blue-800: #0a61ae;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 20px;
+  padding-bottom: 1000px;
+  color: var(--base-800);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+/* logo holder */
+header .logo-holder {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  font-weight: 600;
+  color: var(--base-800);
+}
+
+header .logo-holder .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background-color: var(--base-800);
+  color: var(--base-100);
+  height: 64px;
+  width: 64px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+header .logo-holder .logo-text {
+  flex: 1;
+}
+
+/* nav */
+header nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 5px;
+  align-items: center;
+}
+
+header nav ul li {
+  display: inline-block;
+}
+
+header nav ul li a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: var(--base);
+}
+
+header nav ul li a:hover {
+  background-color: var(--base-100);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* mobile toggle */
+header .mobile-toggle {
+  display: none;
+  color: var(--base-800);
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* responsive header */
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  header nav {
+    margin-top: 10px;
+    width: 100%;
+  }
+  header nav ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+  }
+  header nav ul.active {
+    display: flex;
+  }
+  header nav ul li a {
+    width: 100%;
+    padding: 12px 20px;
+  }
+  header .mobile-toggle {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Section layout */
+section {
+  max-width: 1440px;
+  margin: auto;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: var(--blue);
+  color: var(--base-100);
+  border-radius: 10px;
+  transition: ease 0.3s all;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: var(--base-800);
+}
+
+.button.white {
+  background-color: white;
+  color: var(--base-800);
+}
+
+.button.white:hover {
+  background-color: var(--base-100);
+  color: var(--base);
+}
+
+.button.black {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button.black:hover {
+  background-color: var(--base);
+  color: var(--base-100);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Headings */
+h1 {
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+h1 small {
+  display: block;
+  font-weight: 100;
+  font-size: 0.35em;
+}
+
+/* hero */
+.hero {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.green-box {
+  flex: 1;
+  background-color: #b2fba5;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.green-box span {
+  /* legacy selector from original; safe to leave */
+}
+
+.green-box .call-to-action {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.green-box .call-to-action a {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.green-box .social-links a {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.green-box .social-links a img {
+  display: block;
+  height: auto;
+}
+
+/* hero yellow image panel */
+.hero-yellow {
+  flex: 1;
+  background-color: #836953;
+  border-radius: 30px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-yellow img {
+  margin-top: 50px;
+  max-width: 400px;
+  margin-bottom: 50px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Logos / marquee */
+.logos {
+  background-color: var(--base-100);
+  border-radius: 30px;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+@media (max-width: 1440px) {
+  .logos {
+    border-radius: 0;
   }
+}
+
+.logobanner {
+  width: 100vw;
+  max-width: 100%;
+  height: 128px;
+  overflow: hidden;
+  position: relative;
+}
+
+.logobanner .slide {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 40s linear infinite;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding-left: 30px;
+}
+
+/* duplicate images will scroll, so we fetched double set in JS */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* h2 style */
+h2 {
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--base-800);
+  padding: 30px 0;
+}
+
+h2 small {
+  display: block;
+  font-weight: 100;
+  font-size: 0.5em;
+  color: var(--base);
+}
+
+/* h3 */
+h3 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: var(--base-800);
+}
+
+/* Skills box */
+.skills .holder-blue {
+  background-color: var(--blue-100);
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .skills .holder-blue {
+    flex-direction: column;
+  }
+}
+
+.skills .holder-blue .left-column {
+  flex: 1;
+}
+
+.skills .holder-blue .left-column ul {
+  list-style-type: none;
+  gap: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.skills .holder-blue .left-column ul li {
+  display: inline-block;
+  background-color: var(--blue-400);
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+/* Work experience */
+.work-experience .jobs {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 1024px) {
+  .work-experience .jobs {
+    flex-direction: column;
+  }
+}
+
+.work-experience article {
+  background-color: #ffd1dc;
+  padding: 30px;
+  border-radius: 30px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.work-experience article h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.work-experience article div {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--base-800);
+}
+
+.work-experience article p {
+  margin-bottom: 10px;
+}
+
+/* figure with cover image */
+.work-experience article figure {
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+}
+
+.work-experience article figure img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 3s ease;
+}
+
+.work-experience article figure:hover img {
+  transform: scale(1.02);
+}
+
+/* contact */
+.contact-box {
+  background-color: #ffda4b;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-box a {
+  color: var(--base-800);
+  display: block;
+  margin-top: 6px;
+}
+
+/* small / helper spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* utility for menu active (used by state in App.js) */
+#menu.active {
+  display: flex !important;
+}
+
+/* ensure images within content don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* small screens tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 36px;
+    padding: 20px 0;
+  }
+  .logo {
+    height: 48px;
+    width: 48px;
+    font-size: 20px;
+  }
+  .hero-yellow img {
+    max-width: 280px;
+  }
+}
+
+body {
+  font-size: 25px; /* default was 20px */
+  zoom: 1.7; /* makes entire page bigger */
 }

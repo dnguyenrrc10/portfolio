@@ -12,7 +12,6 @@ export default function App() {
           <div className="logo">KN</div>
           <div className="logo-text">Khoa Nguyen's Portfolio Website</div>
         </a>
-        ;;;;;;;;
         <nav>
           <ul id="menu" className={open ? 'active' : ''}>
             <li>

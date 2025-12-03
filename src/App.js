@@ -29,7 +29,7 @@ export default function App() {
               </a>
             </li>
           </ul>
-
+          ,,,,,,,,
           <a className="mobile-toggle" onClick={() => setOpen(!open)}>
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path

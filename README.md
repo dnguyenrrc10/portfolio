@@ -28,3 +28,4 @@ docker rm nguyen_khoa_coding_assignment14
 
 git add .
 git commit -m "test pre-commit hook"
+git commit -m "your message" --no-verify

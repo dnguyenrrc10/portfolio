@@ -11,5 +11,6 @@
         "import/no-anonymous-default-export": "off"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["build/", "node_modules/", "dist/", "coverage/"]
 }
